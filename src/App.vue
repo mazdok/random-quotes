@@ -1,48 +1,56 @@
 <template>
   <div id="app" class="container mx-auto flex flex-col h-full p-4">
-    <header class="text-right">
-      <button
-        class="bg-purple-300 hover:bg-purple-400 text-gray-800 font-bold py-2 px-4 inline-flex items-center rounded"
-        @click="getRandomQuote"
-        type="button"
-      >
-        Get quote
-        <img src="@/assets/icons/refresh.svg" alt="arrows" class="w-4 ml-2" />
-      </button>
-    </header>
+    <AppAlert :show="show" :options="alertOptions" />
+
+    <AppHeader />
 
     <main class="flex-auto">
-      <AuthorQuote :quote="quote" />
+      <transition :name="transitionName">
+        <router-view></router-view>
+      </transition>
     </main>
 
-    <footer
-      class="text-center text-gray-600 text-sm"
-    >Developed by Pavlo Grydzhuk for a web dev course</footer>
+    <AppFooter />
   </div>
 </template>
 
 <script>
-import AuthorQuote from "./components/AuthorQuote.vue";
+import AppHeader from "./components/AppHeader.vue";
+import AppFooter from "./components/AppFooter.vue";
+import AppAlert from "./components/AppAlert.vue";
+import Constants from '@/constants.js';
 
 export default {
-  name: "App",
+  name: "Home",
   components: {
-    AuthorQuote,
+    AppHeader,
+    AppFooter,
+    AppAlert,
   },
   data: () => {
     return {
-      quote: null,
+      show: false,
+      alertOptions: null,
+      transitionName: null,
     };
   },
-  methods: {
-    getRandomQuote() {
-      this.axios
-        .get("https://quote-garden.herokuapp.com/api/v2/quotes/random")
-        .then((response) => (this.quote = response.data.quote));
+  watch: {
+    $route: {
+      immediate: true,
+      handler(to) {
+        this.transitionName = to.path === Constants.ROUTE_ROOT ? "fadeUp" : "fadeDown";
+      },
     },
   },
   created() {
-    this.getRandomQuote();
+    this.$bus.$on("alert", (data) => {
+      this.show = false;
+      clearTimeout(clear);
+
+      this.show = true;
+      this.alertOptions = data;
+      const clear = setTimeout(() => (this.show = false), Constants.ALERT_DUARATION);
+    });
   },
 };
 </script>

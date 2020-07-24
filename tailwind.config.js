@@ -1,8 +1,12 @@
 module.exports = {
   purge: [],
   theme: {
-    extend: {}
+    extend: {
+      
+    }
   },
-  variants: {},
+  variants: {
+    visibility: ['group-hover']
+  },
   plugins: [],
 };

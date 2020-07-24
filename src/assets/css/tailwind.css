@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
+
+.btn {
+  @apply font-bold py-2 px-4 inline-flex items-center rounded;
+}
+
+.btn:disabled {
+    @apply bg-gray-200 text-gray-500 cursor-not-allowed;
+}
+
+.btn-secondary {
+    @apply bg-gray-300 text-gray-800;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  @apply bg-gray-400;
+}
+
+.btn-spin-img > img {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @tailwind utilities;
