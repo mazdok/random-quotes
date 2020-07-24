@@ -10,7 +10,7 @@ export const router = new VueRouter({
             path: '/', component: Home
         },
         {
-            path: '/:id', component: AuthorQuotes
+            path: '/quotes/:id', component: AuthorQuotes
         }
     ]
 })

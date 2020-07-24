@@ -2,7 +2,7 @@
   <blockquote v-if="quote" class="w-full" @click="quoteClicked(quote)">
     <p class="text-2xl border-l-4 border-orange-300 pl-12">{{ quote.quoteText }}</p>
 
-    <router-link v-if="hasFooter" :to="{path: quote.quoteAuthor}">
+    <router-link v-if="hasFooter" :to="{path: `quotes/${quote.quoteAuthor}`}">
       <footer class="quote-footer">
         <div class="px-3 py-5">
           <p class="font-bold text-lg">{{ quote.quoteAuthor }}</p>
