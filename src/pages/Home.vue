@@ -1,6 +1,7 @@
 <template>
   <div class="max-w-screen-md mx-auto flex justify-center items-center h-full">
-    <AuthorQuote :quote="quote" />
+    <AuthorQuote v-if="quote" :quote="quote" />
+    <p v-else>Loading...</p>
   </div>
 </template>
 
