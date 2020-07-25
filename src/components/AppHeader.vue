@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import Constants from '@/constants.js';
+
 export default {
   name: "Header",
   data: () => {
@@ -32,7 +34,7 @@ export default {
       this.$bus.$emit("get-random-quote");
     },
     goBack() {
-      this.$router.go(-1);
+      this.$router.push(Constants.ROUTE_ROOT);
     },
   },
   watch: {
