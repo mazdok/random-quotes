@@ -1,6 +1,6 @@
 # Random quote generator / QuoteGargen API
 
-A demo project for a web-dev course (2020): a random quote generator using a QuoteGarden API.
+A demo project for students at the web-dev course (2020): a random quote generator using a QuoteGarden API.
 
 ![Alt Text](./src/assets/giffy.gif)
 
