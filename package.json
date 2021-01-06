@@ -9,7 +9,7 @@
     "deploy": "sh deploy.sh"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "colorette": "^1.2.0",
     "core-js": "^3.6.5",
     "tailwindcss": "^1.5.2",
